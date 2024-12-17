@@ -1,14 +1,15 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Object = System.Object;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameObject explosionVFX;
+    [SerializeField] private GameObject enemyExplosionVFX;
     
     private void OnParticleCollision(GameObject other)
     {
-        Instantiate(explosionVFX, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        Instantiate(enemyExplosionVFX, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

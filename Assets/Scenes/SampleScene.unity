@@ -1094,8 +1094,9 @@ MonoBehaviour:
   xClampRange: 25
   yClampRange: 20
   controlRollFactor: 20
-  controlPitchFactor: 0
+  controlPitchFactor: 20
   controlYawFactor: 0
+  rotationSpeed: 7
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

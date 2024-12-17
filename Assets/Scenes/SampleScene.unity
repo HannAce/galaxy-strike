@@ -294,7 +294,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.077388406, y: -0, z: -0.000000007450581, w: 0.99700105}
-  m_LocalPosition: {x: 0, y: 23.1, z: -38.3}
+  m_LocalPosition: {x: 0, y: 20, z: -47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1091,6 +1091,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlSpeed: 50
+  xClampRange: 25
+  yClampRange: 20
+  controlRollFactor: 20
+  controlPitchFactor: 0
+  controlYawFactor: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -6,7 +6,9 @@ public class PlayerWeapon : MonoBehaviour
 {
     [SerializeField] private GameObject[] lasers;
     [SerializeField] private RectTransform crosshair;
-    
+    [SerializeField] private Transform targetPoint;
+    [SerializeField] private float targetDistance;
+
     private bool isFiring = false;
 
     private void Start()
@@ -17,7 +19,9 @@ public class PlayerWeapon : MonoBehaviour
     private void Update()
     {
         ProcessFiring();
-        moveCrosshair();
+        MoveCrosshair();
+        MoveTargetPoint();
+        AimLasers();
     }
 
     private void ProcessFiring()
@@ -31,11 +35,28 @@ public class PlayerWeapon : MonoBehaviour
 
     public void OnFire(InputValue value)
     {
-        isFiring = value.isPressed; // this will auto set back to false when not pressed due to the input system "Press And Release"
+        isFiring = value
+            .isPressed; // this will auto set back to false when not pressed due to the input system "Press And Release"
     }
 
-    private void moveCrosshair()
+    private void MoveCrosshair()
     {
         crosshair.position = Input.mousePosition;
+    }
+
+    private void MoveTargetPoint()
+    {
+        Vector3 targetPointPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, targetDistance);
+        targetPoint.position = Camera.main.ScreenToWorldPoint(targetPointPosition);
+    }
+
+    private void AimLasers()
+    {
+        foreach (GameObject laser in lasers)
+        {
+            Vector3 fireDirection = targetPoint.position - transform.position;
+            Quaternion rotationToTarget = Quaternion.LookRotation(fireDirection);
+            laser.transform.rotation = rotationToTarget;
+        }
     }
 }

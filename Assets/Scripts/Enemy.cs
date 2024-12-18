@@ -7,7 +7,15 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject enemyExplosionVFX;
     [SerializeField] private int hp = 3;
+    [SerializeField] private int scoreValue = 10;
     
+    private Scoreboard scoreboard;
+    
+    private void Start()
+    {
+        scoreboard = FindFirstObjectByType<Scoreboard>();
+    }
+
     private void OnParticleCollision(GameObject other)
     {
         ProcessHit();
@@ -19,6 +27,7 @@ public class Enemy : MonoBehaviour
 
         if (hp <= 0)
         {
+            scoreboard.IncreaseScore(scoreValue);
             Instantiate(enemyExplosionVFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

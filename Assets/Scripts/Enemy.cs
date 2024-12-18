@@ -6,10 +6,21 @@ using Object = System.Object;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject enemyExplosionVFX;
+    [SerializeField] private int hp = 3;
     
     private void OnParticleCollision(GameObject other)
     {
-        Instantiate(enemyExplosionVFX, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        ProcessHit();
+    }
+
+    private void ProcessHit()
+    {
+        hp--;
+
+        if (hp <= 0)
+        {
+            Instantiate(enemyExplosionVFX, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }

@@ -3505,7 +3505,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: General
   - m_Version: 1
-    m_Start: 54.01666666666665
+    m_Start: 50.983333333333334
     m_ClipIn: 0
     m_Asset: {fileID: -8364858024875148778}
     m_Duration: 4
@@ -3574,7 +3574,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: General
   - m_Version: 1
-    m_Start: 58.28333333333332
+    m_Start: 55.25
     m_ClipIn: 0
     m_Asset: {fileID: 3925381817978713650}
     m_Duration: 2.531645833333336

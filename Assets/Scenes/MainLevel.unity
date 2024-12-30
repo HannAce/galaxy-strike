@@ -3351,7 +3351,7 @@ PrefabInstance:
       objectReference: {fileID: 686947560}
     - target: {fileID: 6765543972881102480, guid: fd1d9e774408fb5489cced0dfbf965e8, type: 3}
       propertyPath: targetDistance
-      value: 700
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7130710330827450502, guid: fd1d9e774408fb5489cced0dfbf965e8, type: 3}
       propertyPath: EmissionModule.enabled

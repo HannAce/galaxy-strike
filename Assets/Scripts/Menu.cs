@@ -14,7 +14,7 @@ public class Menu : MonoBehaviour
 
     private GameManager m_gameManager;
 
-    private void Start()
+    protected virtual void Start()
     {
         if (GameManager.Exists)
         {
@@ -42,7 +42,7 @@ public class Menu : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         if (m_startButton != null)
         {

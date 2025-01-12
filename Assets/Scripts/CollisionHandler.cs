@@ -4,8 +4,6 @@ using UnityEngine;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] private GameObject playerExplosionVFX;
-    
-    [SerializeField] private GameManager gameManager;
 
     private void Awake()
     {
@@ -16,6 +14,6 @@ public class CollisionHandler : MonoBehaviour
     {
         Instantiate(playerExplosionVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
-        gameManager.ReloadLevel();
+        GameManager.Instance.EndGame(false);
     }
 }

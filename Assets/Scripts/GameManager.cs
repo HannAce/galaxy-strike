@@ -7,8 +7,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
-    [SerializeField] private GameObject crosshairObject;
-    [SerializeField] private GameObject menuObject;
+    [SerializeField] private GameObject m_crosshairObject;
+    [SerializeField] private GameObject m_menuObject;
+    [SerializeField] private GameObject m_endGameMenuObject;
+    [SerializeField] private GameObject m_gameOverMenuObject;
     private bool m_isPaused = false;
 
     // overriding Awake so able to use a Singleton
@@ -16,15 +18,21 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         // need to call base.Awake otherwise it won't run Singleton code (press f12 on Awake if needed)
         base.Awake();
-        if (menuObject == null)
+        if (m_menuObject == null)
         {
             Debug.LogError("MenuObject is null.");
         }
 
-        if (crosshairObject == null)
+        if (m_crosshairObject == null)
         {
             Debug.LogError("CrosshairObject is null.");
         }
+    }
+
+    private void Start()
+    {
+        Cursor.visible = false;
+        Time.timeScale = 1f;
     }
 
     private void Update()
@@ -34,7 +42,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             ReloadLevel();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Pause))
         {
             TogglePause();
         }
@@ -56,8 +64,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         // } shorthand below, ternary operator
         
         Time.timeScale = m_isPaused ? 0 : 1;
-        menuObject.SetActive(m_isPaused);
-        crosshairObject.SetActive(!m_isPaused);
+        m_menuObject.SetActive(m_isPaused);
+        m_crosshairObject.SetActive(!m_isPaused);
+        Cursor.visible = m_isPaused;
     }
 
     public void ReloadLevel()
@@ -68,7 +77,22 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    } 
-    
-    
+    }
+
+    public void EndGame(bool isWin)
+    {
+        if (isWin)
+        {
+            m_endGameMenuObject.SetActive(true);
+        }
+        else
+        {
+            m_gameOverMenuObject.SetActive(true);
+        }
+        
+        Scoreboard.Instance.TrySetHighScore();
+        Cursor.visible = true;
+        Time.timeScale = 0;
+
+    }
 }

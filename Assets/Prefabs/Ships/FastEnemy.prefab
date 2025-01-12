@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: hp
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6844310893480769501, guid: 1bf5658c1b8146c4b8313139d509ca2b, type: 3}
+      propertyPath: scoreValue
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2466217280996419300, guid: 1bf5658c1b8146c4b8313139d509ca2b, type: 3}
